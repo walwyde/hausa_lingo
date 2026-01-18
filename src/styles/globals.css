@@ -1,26 +1,202 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
+/* @import "tailwindcss/utilities"; */
+/* @import "tailwindcss/components"; */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+/* globals.css */
+.dialog-content {
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (max-width: 640px) {
+  .dialog-content {
+    max-height: 85vh;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Vibrant green inspired by Duolingo */
+    --primary: 145 63% 49%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 145 63% 65%;
+
+    /* Warm orange for accents */
+    --secondary: 28 92% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Soft background colors */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Yellow accent for achievements */
+    --accent: 45 93% 58%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 145 63% 49%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(145 63% 49%), hsl(145 63% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(28 92% 58%), hsl(45 93% 58%));
+    --gradient-hero: linear-gradient(135deg, hsl(145 63% 49%) 0%, hsl(28 92% 58%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(145 63% 49% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(145 63% 49% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(145 63% 49% / 0.15);
+    --shadow-glow: 0 0 20px hsl(145 63% 65% / 0.3);
+
+    /* Success/Progress colors */
+    --success: 145 63% 49%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Info color for hints */
+    --info: 213 94% 68%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 240 6% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 145 63% 49%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 145 63% 49%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 145 63% 65%;
+
+    --secondary: 28 92% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 145 63% 49%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(145 63% 49%), hsl(145 63% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(28 92% 58%), hsl(45 93% 58%));
+    --gradient-hero: linear-gradient(135deg, hsl(145 63% 49%) 0%, hsl(28 92% 58%) 100%);
+
+    --shadow-sm: 0 1px 2px 0 hsl(145 63% 49% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(145 63% 49% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(145 63% 49% / 0.15);
+    --shadow-glow: 0 0 20px hsl(145 63% 65% / 0.3);
+
+    --success: 145 63% 49%;
+    --success-foreground: 0 0% 100%;
+    
+    --info: 213 94% 68%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 145 63% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }
